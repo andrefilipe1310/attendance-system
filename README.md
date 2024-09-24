@@ -27,3 +27,4 @@ classDiagram
     User --> Guardian : Mother
     User --> Guardian : Father
     User --> Absence : has
+```
