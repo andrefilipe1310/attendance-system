@@ -1,5 +1,5 @@
 ## Diagrama de classes
-
+```meirmaid
 classDiagram
     class User {
         Long id
