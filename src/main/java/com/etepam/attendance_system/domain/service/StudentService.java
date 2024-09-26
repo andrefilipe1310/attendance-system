@@ -56,6 +56,7 @@ public class StudentService implements IStudentService {
     @Override
     public String delete(Long id) {
         studentRepository.deleteById(id);
+        return "Deletado com sucesso";
     }
 
     private Map<LocalDate,Boolean> createWeeklyFrequency(Student student){
