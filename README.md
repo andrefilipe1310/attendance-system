@@ -28,3 +28,4 @@ classDiagram
     User --> Guardian : Father
     User --> Absence : has
 ```
+
