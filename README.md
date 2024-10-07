@@ -100,3 +100,16 @@ git clone https://github.com/andrefilipe1310/attendance-system.git
 # Entre na pasta do projeto
 cd attendance-system
 
+## Configurações de Banco de Dados
+
+O projeto já está configurado para usar o Railway como banco de dados em produção, mas caso queira rodar localmente, você pode configurar o `application.properties` para apontar para o seu próprio banco PostgreSQL.
+
+### Usando Banco de Dados Local
+
+Edite o arquivo `src/main/resources/application.properties` com as seguintes configurações:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+
