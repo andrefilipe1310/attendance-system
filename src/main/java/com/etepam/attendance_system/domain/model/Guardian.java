@@ -1,16 +1,14 @@
 package com.etepam.attendance_system.domain.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "tb_guardian")
+@Table(name = "tb_guardian")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -19,6 +17,6 @@ public class Guardian {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String name;
-    String phone;
+    private String name;
+    private String phone;
 }

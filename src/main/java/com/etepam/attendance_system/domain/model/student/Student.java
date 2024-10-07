@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "tb_student")
+@Table(name = "tb_student")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +24,11 @@ public class Student {
     private Long id;
 
     private String name;
+    @Column(name = "student_image", columnDefinition = "TEXT")
     private String studentImage;
+    private String email;
+    private String password;
+    private String phone;
     private LocalDate birth;
 
     @OneToOne(cascade = CascadeType.ALL)

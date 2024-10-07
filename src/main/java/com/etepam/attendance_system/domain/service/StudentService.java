@@ -103,6 +103,9 @@ public class StudentService implements IStudentService {
                 student.getBirth(),
                 student.getMother(),
                 student.getFather(),
+                student.getEmail(),
+                student.getPassword(),
+                student.getPhone(),
                 student.getAbsences(),
                 student.getAbsences().size(),
                 (int) monthFrequency.values().stream()
