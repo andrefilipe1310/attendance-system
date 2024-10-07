@@ -112,4 +112,25 @@ Edite o arquivo `src/main/resources/application.properties` com as seguintes con
 spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
+```
+## Usando Railway
 
+O projeto está hospedado no Railway, permitindo que você veja as rotas e funcionalidades em produção sem precisar rodar o projeto localmente.
+
+### Passos para acessar o sistema no Railway:
+
+1. Acesse a aplicação diretamente pela URL: [Attendance System no Railway](https://attendance-system-production.up.railway.app).
+2. Utilize uma ferramenta como o [Swagger](http://attendance-system-production.up.railway.app/swagger-ui.html) para explorar as rotas da API e visualizar a documentação interativa.
+
+### Verificando Rotas
+
+Para visualizar as rotas e realizar testes nas APIs, você pode acessar a documentação do Swagger disponível diretamente no ambiente de produção:
+
+- [Swagger - Attendance System](http://attendance-system-production.up.railway.app/swagger-ui.html)
+
+Com essa interface, você pode explorar todas as rotas disponíveis no sistema, fazer requisições e ver as respostas das APIs diretamente pela interface do Swagger.
+
+### Observações
+
+- Certifique-se de que o banco de dados está acessível e a aplicação rodando corretamente no Railway antes de realizar requisições.
+- Todas as funcionalidades do sistema estão ativas na versão de produção.
