@@ -134,3 +134,22 @@ Com essa interface, você pode explorar todas as rotas disponíveis no sistema, 
 
 - Certifique-se de que o banco de dados está acessível e a aplicação rodando corretamente no Railway antes de realizar requisições.
 - Todas as funcionalidades do sistema estão ativas na versão de produção.
+
+### Contribuindo
+
+Para contribuir com o projeto acesse o arquivo `CONTRIBUTING.md` para mais informações!
+
+### Autores
+
+###### Funções:
+
+- **Scrum Master**: Estephani Germana 
+- **Gerente de Configurações**: Manuella Jatobá
+- **Documentador**: Amanda Lima e Ariano Souza
+
+### Licença
+
+A licença do projeto é a Creative Commons para mais informações acessar o arquivo `LICENSE`.
+
+
+! Faltam as Imagens (5)
