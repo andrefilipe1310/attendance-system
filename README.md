@@ -134,3 +134,6 @@ Com essa interface, você pode explorar todas as rotas disponíveis no sistema, 
 
 - Certifique-se de que o banco de dados está acessível e a aplicação rodando corretamente no Railway antes de realizar requisições.
 - Todas as funcionalidades do sistema estão ativas na versão de produção.
+## prototipo de alta fidelidade
+### Pagina do aluno
+<img src="https://github.com/andrefilipe1310/attendance-system/blob/main/interfaces/pagina-do-aluno.png" alt="Texto Alternativo">
