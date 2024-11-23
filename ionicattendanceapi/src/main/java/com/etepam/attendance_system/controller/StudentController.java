@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
+@CrossOrigin(origins = "http://localhost:8100", allowCredentials = "true")
 @RequestMapping("/student")
 public class StudentController {
     @Autowired

@@ -8,18 +8,18 @@ import com.etepam.attendance_system.domain.model.user.RegisterDTO;
 import com.etepam.attendance_system.domain.service.TokenService;
 import com.etepam.attendance_system.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:8100", allowCredentials = "true")
 public class AuthenticationController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -32,7 +32,8 @@ public class AuthenticationController {
         var userNamePassword = new UsernamePasswordAuthenticationToken(data.email(),data.password());
         var auth = authenticationManager.authenticate(userNamePassword);
         var token = tokenService.generateToken((User) auth.getPrincipal());
-        return ResponseEntity.ok(new LoginResponseDTO(token));
+        return ResponseEntity.status(HttpStatus.OK).body(new LoginResponseDTO(token));
+
     }
 
     @PostMapping("/register")

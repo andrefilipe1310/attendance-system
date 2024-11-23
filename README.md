@@ -32,52 +32,52 @@ classDiagram
     }
 
     class User implements UserDetails {
-        Long id
-        String email
-        String password
-        UserRoles roles
-        +Collection getAuthorities()
-        +void update(UserRequestDTO userRequestDTO)
-        +UserResponseDTO toDTO()
+Long id
+String email
+String password
+UserRoles roles
++Collection getAuthorities()
++void update(UserRequestDTO userRequestDTO)
++UserResponseDTO toDTO()
+}
+
+class UserRequestDTO {
+<<record>>
+String email()
+String password()
+}
+
+class UserResponseDTO {
+<<record>>
+Long id
+String email
     }
 
-    class UserRequestDTO {
-        <<record>>
-        String email()
-        String password()
-    }
+class StudentResponseDTO {
+<<record>>
+Long id
+String name
+String studentImage
+LocalDate birth
+Guardian mother
+Guardian father
+String email
+String password
+String phone
+List<Absence> absences
+int totalAbsences
+int totalMonthAbsences
+int totalWeekAbsences
+Map<LocalDate,Boolean> monthFrequency
+Map<LocalDate,Boolean> weeklyFrequency
+LocalDate todayDate
+}
 
-    class UserResponseDTO {
-        <<record>>
-        Long id
-        String email
-    }
-
-    class StudentResponseDTO {
-        <<record>>
-        Long id
-        String name
-        String studentImage
-        LocalDate birth
-        Guardian mother
-        Guardian father
-        String email
-        String password
-        String phone
-        List<Absence> absences
-        int totalAbsences
-        int totalMonthAbsences
-        int totalWeekAbsences
-        Map<LocalDate,Boolean> monthFrequency
-        Map<LocalDate,Boolean> weeklyFrequency
-        LocalDate todayDate
-    }
-
-    Student "1" --> "many" Absence
-    Student "1" --> "1" Guardian : mother
-    Student "1" --> "1" Guardian : father
-    User "1" --> "1" UserRequestDTO
-    User "1" --> "1" UserResponseDTO
+Student "1" --> "many" Absence
+Student "1" --> "1" Guardian : mother
+Student "1" --> "1" Guardian : father
+User "1" --> "1" UserRequestDTO
+User "1" --> "1" UserResponseDTO
 
 ```
 

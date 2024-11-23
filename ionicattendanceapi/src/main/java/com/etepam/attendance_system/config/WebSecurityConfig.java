@@ -30,11 +30,10 @@ public class WebSecurityConfig {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
                 .authorizeHttpRequests(authorize->{
-                    authorize.requestMatchers(HttpMethod.POST,"/auth/login").permitAll()
-                            .requestMatchers(HttpMethod.POST,"/auth/register").permitAll()
+                    authorize.requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                            .requestMatchers("/auth/**").permitAll()
                             .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                             .requestMatchers(HttpMethod.POST,"/student").hasRole("ADMIN")
-
                             .anyRequest().authenticated();
                 })
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
