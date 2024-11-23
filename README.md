@@ -137,13 +137,15 @@ Com essa interface, você pode explorar todas as rotas disponíveis no sistema, 
 
 ## Fluxo de trablho
 
+Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/blob/structure/ionicattendancedocs/models/mindmap/Fluxo%20de%20Trabalho.pdf)
 
 ## Mockup 
 
+Para visualizar o prótotipo construido para esse projeto é só acessar a pasta [MOCKUP](https://github.com/andrefilipe1310/attendance-system/tree/structure/ionicattendancedocs/models/mockup)
 
 ### Contribuindo
 
-Para contribuir com o projeto acesse o arquivo [CONTRIBUTING.md](https://github.com/andrefilipe1310/attendance-system/CONTRIBUTING.md)
+Para contribuir com o projeto acesse o arquivo [CONTRIBUTING.md](https://github.com/andrefilipe1310/attendance-system/blob/structure/CONTRIBUTING.md)
 para mais informações!
 
 #### Comandos do Git para contribuir
@@ -173,6 +175,6 @@ git push origm nomebranch
 
 ### Licença
 
-A licença do projeto é a Creative Commons para mais informações acessar o arquivo `LICENSE`.
+A licença do projeto é a Creative Commons para mais informações acessar o arquivo [LICENCE](https://github.com/andrefilipe1310/attendance-system/blob/structure/LICENSE).
 
 
