@@ -36,6 +36,11 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 - [Git](https://git-scm.com/)
 - [PostgreSQL](https://www.postgresql.org/download/)
 
+## Fluxo de trablho
+
+
+
+
 ## Como contribuir 
 
 Primeiro, obrigado por dedicar seu tempo para contribuir!
@@ -58,6 +63,19 @@ Essas diretrizes são apenas sugestões, não regras rígidas. Use seu bom senso
 * Envie seu Pull Request.
 >Obrigado pela ajuda!
 
-## Comandos
+## Comandos do Git para contribuir
 
+````
+git clone https://github.com/andrefilipe1310/attendance-system.git
+
+git checkout -b nomebranch
+
+git status
+
+git add .
+
+git commit -a -m "Alterações Salvas"
+
+git push origm nomebranch
+`````
 
