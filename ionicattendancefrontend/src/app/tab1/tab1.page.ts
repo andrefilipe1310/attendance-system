@@ -1,3 +1,4 @@
+import { Guardian } from './../model/student.model';
 import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from '../service/attendance.service';
 import { Student } from '../model/student.model';
@@ -19,8 +20,7 @@ export class Tab1Page implements OnInit {
     phone:"",
     studentImage: "",
     birth: "",
-    mother: { name: "", phone: "" },
-    father: { name: "", phone: "" },
+    guardians: [{ name: "", phone: "" }, { name: "", phone: "" }],
     absences:[],
 
   }
