@@ -1,43 +1,53 @@
 package com.etepam.attendance_system.config;
 
 import jakarta.servlet.*;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
-
-@Component
+@Configuration
 public class SimpleCORSFilter implements Filter {
-    @Override
-    public void init(FilterConfig filterConfig) {
-    }
 
+    private final List<String> allowedOrigins = Arrays.asList(
+            "http://localhost:8100"
+    );
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
 
-        // Configurando os cabeçalhos CORS
-        response.setHeader("Access-Control-Allow-Origin", "http://localhost:8100");
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        String origin = request.getHeader("Origin");
+
+
+        if (origin != null && allowedOrigins.stream().anyMatch(origin::equalsIgnoreCase)) {
+            System.out.println(origin + " aqui 2");
+            response.setHeader("Access-Control-Allow-Origin", origin);
+            response.setHeader("Access-Control-Allow-Credentials", "true");
+        }
+
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, PATCH");
         response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
-        response.setHeader("Access-Control-Allow-Credentials", "true");
 
-        // Verificando se é uma requisição preflight (OPTIONS)
+        // Handle preflight requests (OPTIONS)
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+
             response.setStatus(HttpServletResponse.SC_OK);
         } else {
+
             chain.doFilter(req, res);
         }
     }
 
     @Override
-    public void destroy() {
+    public void init(FilterConfig filterConfig) {
     }
 
+    @Override
+    public void destroy() {
+    }
 }
