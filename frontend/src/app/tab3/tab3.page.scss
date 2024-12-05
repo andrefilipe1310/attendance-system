@@ -1,0 +1,68 @@
+/* Estilos para o componente de reconhecimento facial */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 16px;
+  }
+  
+  .profile-container {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .profile-picture {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .user-name {
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .button-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  #message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #b10835;
+    border: 1px solid #b10835;
+    border-radius: 5px;
+  }
+  
+  ion-button {
+    margin-top: 16px;
+  }
+  
+  ion-footer {
+    ion-toolbar {
+      --background: #f8f9fa;
+    }
+  
+    ion-segment {
+      ion-segment-button {
+        --color-checked: #007aff; /* Cor quando selecionado */
+        --color: #555; /* Cor padrão */
+      }
+  
+      ion-icon {
+        margin-bottom: 4px;
+      }
+    }
+  }
+  

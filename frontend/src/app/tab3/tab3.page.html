@@ -1,17 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="header-title">
+      RECONHECIMENTO FACIAL
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="container">
+    <!-- Foto do usuário -->
+    <div class="profile-container">
+      <ion-avatar class="profile-picture">
+        <img alt="Foto do Usuário" src="../../assets/cachorro.jpg" />
+      </ion-avatar>
+      <h2 class="user-name">Dogsons Latins</h2>
+    </div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+
+    <div class="button-container">
+
+      <div id="message">
+        Reconhecimento facial não realizado, tente novamante
+      </div>
+
+      <ion-button expand="block" color="light" >
+        TENTAR NOVAMENTE
+      </ion-button>
+
+      <ion-button expand="block" color="primary" >
+        REALIZAR OUTRO RECONHECIMENTO
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
+
+

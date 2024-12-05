@@ -2,7 +2,6 @@
   <ion-toolbar>
     <ion-title>Cadastro de Estudantes</ion-title>
   </ion-toolbar>
-  
 </ion-header>
 
 <ion-content>
@@ -14,53 +13,90 @@
   <ion-list>
     <ion-list>
       <ion-item>
-        <ion-input  [(ngModel)]="student.name" label="Name " placeholder="EX: André Filipe"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-datetime [(ngModel)]="student.birth">
-          <span slot="time-label">Birth</span>
-        </ion-datetime>
-      </ion-item>
-      
-      <ion-item>
-        <ion-content>
-          <ion-button (click)="takePhoto()">Tirar Foto</ion-button>
-        
-          <ion-img [src]="photo"></ion-img>
-        </ion-content>
-      </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="student.email" label="Email " type="email" placeholder="EX: email@domain.com"></ion-input>
+        <ion-input
+          [(ngModel)]="student.name"
+          label="Name "
+          placeholder="EX: André Filipe"
+        ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input [(ngModel)]="student.password" label="Password " type="password"  placeholder="EX: password@123" value="password"></ion-input>
-      </ion-item>
-  
-        
-      <ion-item>
-        <ion-input [(ngModel)]="student.phone" label="Telephone " type="tel" placeholder="EX: (81) 9 9999-9999"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input [(ngModel)]="student.father.name" label="Name Father " placeholder="EX: André Filipe"></ion-input>
+        <ion-input
+          [(ngModel)]="student.birth"
+          label="date "
+          type="date"
+          placeholder="EX: dd/mm/yyyy"
+          value="date"
+        ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input [(ngModel)]="student.father.phone" label="Telephone Father " type="tel" placeholder="EX: (81) 9 9999-9999"></ion-input>
+        <ion-button (click)="takePhoto()">Tirar Foto</ion-button>
+      <ion-img [src]="photo"></ion-img>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          [(ngModel)]="student.email"
+          label="Email "
+          type="email"
+          placeholder="EX: email@domain.com"
+        ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input [(ngModel)]="student.mother.name" label="Name Mother " placeholder="EX: Ellen Filipe"></ion-input>
+        <ion-input
+          [(ngModel)]="student.password"
+          label="Password "
+          type="password"
+          placeholder="EX: password@123"
+          value="password"
+        ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input [(ngModel)]="student.mother.phone" label="Telephone Mother " type="tel" placeholder="EX: (81) 9 9999-9999"></ion-input>
+        <ion-input
+          [(ngModel)]="student.phone"
+          label="Telephone "
+          type="tel"
+          placeholder="EX: (81) 9 9999-9999"
+        ></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-input
+          [(ngModel)]="student.guardians[0].name"
+          label="Responsible Name 1"
+          placeholder="EX: André Filipe"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          [(ngModel)]="student.guardians[0].phone"
+          label="Responsible Phone 1"
+          type="tel"
+          placeholder="EX: (81) 9 9999-9999"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          [(ngModel)]="student.guardians[1].name"
+          label="Responsible Name 2"
+          placeholder="EX: Ellen Filipe"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          [(ngModel)]="student.guardians[1].phone"
+          label="Responsible Phone 2"
+          type="tel"
+          placeholder="EX: (81) 9 9999-9999"
+        ></ion-input>
+      </ion-item>
     </ion-list>
   </ion-list>
 
-  <ion-button (click)="addStudent(student)">Adicionar Estudante</ion-button>
+  <ion-button (click)="addStudent(student)">Add Student</ion-button>
 </ion-content>
