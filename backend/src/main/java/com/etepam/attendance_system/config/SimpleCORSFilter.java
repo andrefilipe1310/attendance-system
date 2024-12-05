@@ -25,7 +25,6 @@ public class SimpleCORSFilter implements Filter {
 
 
         if (origin != null && allowedOrigins.stream().anyMatch(origin::equalsIgnoreCase)) {
-            System.out.println(origin + " aqui 2");
             response.setHeader("Access-Control-Allow-Origin", origin);
             response.setHeader("Access-Control-Allow-Credentials", "true");
         }
