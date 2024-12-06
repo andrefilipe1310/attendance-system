@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar >
     <ion-title>Cadastro de Estudantes</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,30 +14,28 @@
     <ion-list>
       <ion-item>
         <ion-input
+          label="Nome" 
+          label-placement="floating"  
           [(ngModel)]="student.name"
-          label="Name "
           placeholder="EX: André Filipe"
         ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-input
+          label="Data de nascimento" 
+          label-placement="floating" 
           [(ngModel)]="student.birth"
-          label="date "
           type="date"
           placeholder="EX: dd/mm/yyyy"
           value="date"
         ></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-button (click)="takePhoto()">Tirar Foto</ion-button>
-      <ion-img [src]="photo"></ion-img>
-      </ion-item>
       <ion-item>
         <ion-input
+         label="Email" 
+          label-placement="floating" 
           [(ngModel)]="student.email"
-          label="Email "
           type="email"
           placeholder="EX: email@domain.com"
         ></ion-input>
@@ -45,8 +43,9 @@
 
       <ion-item>
         <ion-input
+          label="Senha" 
+          label-placement="floating" 
           [(ngModel)]="student.password"
-          label="Password "
           type="password"
           placeholder="EX: password@123"
           value="password"
@@ -55,6 +54,8 @@
 
       <ion-item>
         <ion-input
+          label="Telefone" 
+          label-placement="floating" 
           [(ngModel)]="student.phone"
           label="Telephone "
           type="tel"
@@ -64,16 +65,18 @@
 
       <ion-item>
         <ion-input
+          label="Nome do responsável" 
+          label-placement="floating" 
           [(ngModel)]="student.guardians[0].name"
-          label="Responsible Name 1"
           placeholder="EX: André Filipe"
         ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-input
+          label="Número do responsável 1" 
+          label-placement="floating" 
           [(ngModel)]="student.guardians[0].phone"
-          label="Responsible Phone 1"
           type="tel"
           placeholder="EX: (81) 9 9999-9999"
         ></ion-input>
@@ -81,16 +84,18 @@
 
       <ion-item>
         <ion-input
+          label="Nome do responsável 2" 
+          label-placement="floating"
           [(ngModel)]="student.guardians[1].name"
-          label="Responsible Name 2"
           placeholder="EX: Ellen Filipe"
         ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-input
+          label="Número do responsável 2" 
+          label-placement="floating"
           [(ngModel)]="student.guardians[1].phone"
-          label="Responsible Phone 2"
           type="tel"
           placeholder="EX: (81) 9 9999-9999"
         ></ion-input>
@@ -98,5 +103,13 @@
     </ion-list>
   </ion-list>
 
-  <ion-button (click)="addStudent(student)">Add Student</ion-button>
+  <div class="display-center">
+    <ion-button (click)="takePhoto()" class="photo">Tirar Foto</ion-button>
+  <ion-img [src]="photo"></ion-img>
+</div>
+  
+
+  <div class="display-center">
+    <ion-button (click)="addStudent(student)" class="button">ADICIONAR ESTUDANTE</ion-button>
+  </div>
 </ion-content>
