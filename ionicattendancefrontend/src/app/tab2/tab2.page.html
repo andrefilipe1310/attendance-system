@@ -1,156 +1,89 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      INFORMAÇÕES DO ALUNO
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Informações do Aluno</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-grid>
-    <ion-row class="color-ajust">
-      <ion-col class="color-ajust">
-        <ion-card class="color-ajust blue-coloring">
-          <ion-card-header >
-            <ion-card-title class="color-ajust">faltas semanais: 1</ion-card-title>
-            <ion-card-title class="color-ajust">faltas totais: 50</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col >
-        <div class="container-photo" class="color-ajust black-coloring">
-          <ion-icon class="photo" name="person-circle-outline"></ion-icon>
-        </div>
-      </ion-col>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Barra de busca -->
+  <ion-searchbar 
+    placeholder="Buscar Aluno" 
+    (ionInput)="filterStudents($event)"
+    class="ion-margin-bottom"
+  ></ion-searchbar>
 
-    </ion-row>
-  </ion-grid>
+  <!-- Dropdown para seleção -->
+  <ion-select 
+    placeholder="Selecione um aluno" 
+    (ionChange)="fetchStudentDetails($event.detail.value)"
+    class="ion-margin-bottom"
+    interface="action-sheet"
+  >
+    <ion-select-option 
+      *ngFor="let student of filteredStudents" 
+      [value]="student.userId"
+    >
+      {{ student.name }}
+    </ion-select-option>
+  </ion-select>
 
-<div class="centralize">
-  <ion-datetime 
-    presentation="date" 
-    value="2023-01-01" 
-    [highlightedDates]="highlightedDates"
-    class="color-ajust black-coloring"
-  ></ion-datetime>
-</div>
-  <!--
-  <div class="session-2">
-      <div class="title"> 
-      <ion-title>Frequência</ion-title>
-      </div>
-      <div class="weekly-schedule">
-      <ion-card>
-        <ion-card-header>
-          <div class="month-container">
-            <ion-card-title class="month">OUTUBRO</ion-card-title>
-          </div>
-          <div>
-            <ion-grid>
-              <ion-row>
+  <!-- Detalhes do aluno -->
+  <ion-card *ngIf="student.id > 0">
+    <ion-card-header>
+      <ion-card-title>{{ student.name }}</ion-card-title>
+    </ion-card-header>
 
-                <ion-col class="day-container">
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">17</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>D</ion-title>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">18</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>S</ion-title>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">19</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>T</ion-title>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">20</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>Q</ion-title>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">21</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>Q</ion-title>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">22</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>S</ion-title>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <ion-card class="card-day">
-                      <ion-card-title class="number-day">23</ion-card-title>
-                    </ion-card>
-                  </div>
-                  <div class="letter-day">
-                    <ion-title>S</ion-title>
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </ion-card-header>
-      </ion-card>
-    </div>
-  </div>
-  -->
-  <div class="session-3">
-    <div class="title"> 
-      <ion-title>CONTATOS</ion-title>
-      </div>
-      <div class="content">
-        <ion-card class="color-ajust blue-coloring">
-          <ion-card-header>
-            <ion-card-title class="color-ajust">Responsável 1: Amanda Almeida</ion-card-title>
-            <ion-card-title class="color-ajust">contato: (81)99999-9999</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card>
-          <ion-card-header class="color-ajust blue-coloring">
-            <ion-card-title class="color-ajust" >Responsável 2: Lucas Almeida</ion-card-title>
-            <ion-card-title class="color-ajust" >contato: (81)99999-9999</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </div>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label>
+            <h2>Faltas Semanais</h2>
+            <p>{{ student.totalWeekAbsences || 0 }}</p>
+          </ion-label>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        </ion-item>
 
-  </div>
+        <ion-item>
+          <ion-label>
+            <h2>Faltas Totais</h2>
+            <p>{{ student.totalAbsences || 0 }}</p>
+          </ion-label>
+          <ion-icon name="clipboard-outline" slot="start"></ion-icon>
+        </ion-item>
 
+        <ion-item-divider>
+          <ion-label>Responsáveis</ion-label>
+        </ion-item-divider>
+
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ student.guardians[0].name || 'Responsável 1' }}</h2>
+            <p>{{ student.guardians[0].phone || 'Sem contato' }}</p>
+          </ion-label>
+          <ion-icon name="call-outline" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ student.guardians[1].name || 'Responsável 2' }}</h2>
+            <p>{{ student.guardians[1].phone || 'Sem contato' }}</p>
+          </ion-label>
+          <ion-icon name="call-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="student.id < 0">
+    <ion-card-content class="ion-text-center">
+      <ion-icon name="help-circle-outline" class="ion-margin-bottom" style="font-size: 50px; color: var(--ion-color-medium)"></ion-icon>
+      <p>Nenhum aluno selecionado</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

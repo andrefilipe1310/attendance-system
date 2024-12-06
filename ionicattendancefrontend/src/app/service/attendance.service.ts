@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Student, StudentRequestDTO } from '../model/student.model';
+import { Student, StudentFeatures, StudentRequestDTO,StudentResponseDTO } from '../model/student.model';
 import {  HttpHeaders } from '@angular/common/http';
 import { ImageUploadDTO } from '../model/student.model';
 @Injectable({
@@ -12,12 +12,20 @@ export class AttendanceService {
   private apiUrl:string = 'http://localhost:8080/student'
   constructor(private http:HttpClient) { }
   
-  getStudents(): Observable<Student[]> {
+  getStudentById(userId:number): Observable<StudentResponseDTO> {
     const headers = new HttpHeaders({'Content-Type': 'application/json',
-      'Authorization':`bearer ${localStorage.getItem("token")}`
+      'Authorization':`Bearer ${localStorage.getItem("token")}`
     })
     
-    return this.http.get<Student[]>(this.apiUrl,{headers, withCredentials:true});
+    return this.http.get<StudentResponseDTO>(this.apiUrl+"/"+userId,{headers, withCredentials:true});
+  }
+  getAllStudentsFeatures(): Observable<StudentFeatures[]> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.http.get<StudentFeatures[]>(`${this.apiUrl}/features`, { headers, withCredentials: true });
   }
 
   addStudent(student:StudentRequestDTO):Observable<Student>{

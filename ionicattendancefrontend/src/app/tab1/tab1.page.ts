@@ -19,6 +19,7 @@ export class Tab1Page implements OnInit {
     phone:"",
     birth: "",
     guardians: [{ name: "", phone: "" }, { name: "", phone: "" }],
+   
   }
   studentImage: Blob | undefined;
 
