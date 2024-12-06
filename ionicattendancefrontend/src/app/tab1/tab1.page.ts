@@ -1,4 +1,4 @@
-import { Guardian } from './../model/student.model';
+import { Guardian, StudentRequestDTO } from './../model/student.model';
 import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from '../service/attendance.service';
 import { Student } from '../model/student.model';
@@ -12,18 +12,15 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 export class Tab1Page implements OnInit {
   photo: string | undefined;
   students: Student[] = []
-  student: Student = {
-
+  student: StudentRequestDTO = {
     name: "",
     email:"",
     password:"",
     phone:"",
     birth: "",
     guardians: [{ name: "", phone: "" }, { name: "", phone: "" }],
-    absences:[],
-
   }
-  studentImage:string|undefined = ""
+  studentImage: Blob | undefined;
 
   constructor(private attedanceService: AttendanceService) { }
 
@@ -34,28 +31,46 @@ export class Tab1Page implements OnInit {
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera,
     })
-    this.photo = image.dataUrl
-    console.log( this.photo?.length)
-    this.studentImage = this.photo
-
+    this.photo = image.dataUrl;
+    if(this.photo == undefined){
+      return
+    }
+    const byteString = atob(this.photo.split(',')[1]);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      uint8Array[i] = byteString.charCodeAt(i);
+    }
+    this.studentImage = new Blob([arrayBuffer], { type: 'image/jpeg' });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
  
-  addStudent(newStudent: Student) {
-    console.log(newStudent)
+  addStudent(newStudent: StudentRequestDTO) {
+    console.log(newStudent);
     this.attedanceService.addStudent(newStudent).subscribe({
       next: (student) => {
         this.students.push(student);
+        if (this.studentImage) {
+          this.uploadImage(this.studentImage, student.id);
+        }
       },
       error: (error) => {
         console.error('Error adding student', error);
       }
-    })
+    });
   }
 
-
+  uploadImage(file: Blob, studentId: number) {
+    const formData = new FormData();
+    formData.append('file', file);
+    this.attedanceService.uploadImage(formData, studentId).subscribe({
+      next: () => {
+        console.log("Image uploaded successfully");
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
 }
-
