@@ -44,7 +44,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/tree/development/ionicattendancedocs/models/mindmap)
 
 
-## Como contribuir 
+## Como contribuir
 
 Primeiro, obrigado por dedicar seu tempo para contribuir!
 
