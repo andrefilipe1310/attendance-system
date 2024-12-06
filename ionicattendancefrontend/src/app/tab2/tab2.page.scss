@@ -1,3 +1,16 @@
+
+@font-face {
+    font-family: Inter;
+    src: url("../../assets/fonts/Inter-regular.ttf");
+}
+@font-face {
+    font-family: InterBold;
+    src: url("../../assets/fonts/Inter-bold.ttf");
+}
+@font-face {
+    font-family: InterExtraBold;
+    src: url("../../assets/fonts/Inter-extra-bold.ttf");
+}
 .card-day {
     background-color:#95B6FF;
    
@@ -38,3 +51,40 @@
     width: 5em;
     height: 10em;
 }
+
+.centralize{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+ion-content{
+    --background: white;
+}
+
+
+ion-toolbar{
+    --background: #008DD5;
+    align-items: center;
+    --min-height:15vw;
+    justify-content: end;
+}
+ion-title{
+    font-family: InterExtraBold;
+    font-size: 4vw;
+    text-align: center;
+
+}
+
+.color-ajust{
+    --background: white;
+    color: white;
+    font-family: Inter;
+}
+
+.black-coloring{
+    color: black;
+}
+.blue-coloring{
+    --background: #008DD5;
+}
+
