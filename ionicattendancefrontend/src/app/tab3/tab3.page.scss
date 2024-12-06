@@ -1,4 +1,37 @@
 /* Estilos para o componente de reconhecimento facial */
+
+
+@font-face {
+  font-family: Inter;
+  src: url("../../assets/fonts/Inter-regular.ttf");
+}
+@font-face {
+  font-family: InterBold;
+  src: url("../../assets/fonts/Inter-bold.ttf");
+}
+@font-face {
+  font-family: InterExtraBold;
+  src: url("../../assets/fonts/Inter-extra-bold.ttf");
+}
+
+ion-content{
+  --background: white;
+}
+
+
+ion-toolbar{
+  --background: #008DD5;
+  align-items: center;
+  --min-height:15vw;
+  justify-content: end;
+}
+ion-title{
+  font-family: InterExtraBold;
+  font-size: 4vw;
+  text-align: center;
+  color: white;
+
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -27,11 +60,14 @@
     font-size: 20px;
     font-weight: bold;
     color: #333333;
+    font-family: InterExtraBold;
+    
   }
   
   .button-container {
     width: 100%;
     max-width: 400px;
+    font-family: InterExtraBold;
   }
 
   #message{
@@ -43,6 +79,7 @@
     color: #b10835;
     border: 1px solid #b10835;
     border-radius: 5px;
+    font-family: InterExtraBold;
   }
   
   ion-button {
@@ -57,7 +94,7 @@
     ion-segment {
       ion-segment-button {
         --color-checked: #007aff; /* Cor quando selecionado */
-        --color: #555; /* Cor padrão */
+        --color: white; /* Cor padrão */
       }
   
       ion-icon {
