@@ -1,35 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      INFORMAÇÕES DO ALUNO
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>faltas semanais: 1</ion-card-title>
-            <ion-card-title>faltas totais: 50</ion-card-title>
+    <ion-row class="color-ajust">
+      <ion-col class="color-ajust">
+        <ion-card class="color-ajust blue-coloring">
+          <ion-card-header >
+            <ion-card-title class="color-ajust">faltas semanais: 1</ion-card-title>
+            <ion-card-title class="color-ajust">faltas totais: 50</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <div class="container-photo">
+      <ion-col >
+        <div class="container-photo" class="color-ajust black-coloring">
           <ion-icon class="photo" name="person-circle-outline"></ion-icon>
         </div>
       </ion-col>
 
     </ion-row>
   </ion-grid>
+
+<div class="centralize">
+  <ion-datetime 
+    presentation="date" 
+    value="2023-01-01" 
+    [highlightedDates]="highlightedDates"
+    class="color-ajust black-coloring"
+  ></ion-datetime>
+</div>
+  <!--
   <div class="session-2">
       <div class="title"> 
       <ion-title>Frequência</ion-title>
@@ -121,21 +131,22 @@
       </ion-card>
     </div>
   </div>
+  -->
   <div class="session-3">
     <div class="title"> 
       <ion-title>CONTATOS</ion-title>
       </div>
       <div class="content">
-        <ion-card>
+        <ion-card class="color-ajust blue-coloring">
           <ion-card-header>
-            <ion-card-title>Responsável 1: Amanda Almeida</ion-card-title>
-            <ion-card-title>contato: (81)99999-9999</ion-card-title>
+            <ion-card-title class="color-ajust">Responsável 1: Amanda Almeida</ion-card-title>
+            <ion-card-title class="color-ajust">contato: (81)99999-9999</ion-card-title>
           </ion-card-header>
         </ion-card>
         <ion-card>
-          <ion-card-header>
-            <ion-card-title>Responsável 2: Lucas Almeida</ion-card-title>
-            <ion-card-title>contato: (81)99999-9999</ion-card-title>
+          <ion-card-header class="color-ajust blue-coloring">
+            <ion-card-title class="color-ajust" >Responsável 2: Lucas Almeida</ion-card-title>
+            <ion-card-title class="color-ajust" >contato: (81)99999-9999</ion-card-title>
           </ion-card-header>
         </ion-card>
       </div>
