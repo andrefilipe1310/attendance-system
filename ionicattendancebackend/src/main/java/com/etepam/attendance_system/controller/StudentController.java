@@ -37,6 +37,10 @@ public class StudentController {
     public ResponseEntity<List<StudentResponseDTO>> findAll(){
         return ResponseEntity.ok(studentService.findAll());
     }
+    @GetMapping("/features")
+    public ResponseEntity<List<StudentFeatureResponseDTO>> findAllFeatures(){
+        return ResponseEntity.ok(studentService.findAllFeatures());
+    }
     @GetMapping("/{id}")
     public  ResponseEntity<StudentResponseDTO> findById(@PathVariable("id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(studentService.findById(id));

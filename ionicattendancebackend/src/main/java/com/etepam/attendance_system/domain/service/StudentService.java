@@ -1,10 +1,7 @@
 package com.etepam.attendance_system.domain.service;
 
 import com.etepam.attendance_system.domain.model.guardian.Guardian;
-import com.etepam.attendance_system.domain.model.student.Student;
-import com.etepam.attendance_system.domain.model.student.StudentRequestDTO;
-import com.etepam.attendance_system.domain.model.student.StudentResponseDTO;
-import com.etepam.attendance_system.domain.model.student.StudentUpdateDTO;
+import com.etepam.attendance_system.domain.model.student.*;
 import com.etepam.attendance_system.domain.service.interfaces.IStudentService;
 import com.etepam.attendance_system.exceptions.StudentNotFoundException;
 import com.etepam.attendance_system.repository.StudentRepository;
@@ -49,6 +46,17 @@ public class StudentService implements IStudentService {
         List<Student> students = studentRepository.findAll();
         List<StudentResponseDTO> studentResponseDTOs = students.stream()
                 .map(student -> convertToDTO(student))
+                .collect(Collectors.toList());
+
+        return studentResponseDTOs;
+    }
+
+    public List<StudentFeatureResponseDTO> findAllFeatures() {
+        List<Student> students = studentRepository.findAll();
+        List<StudentFeatureResponseDTO> studentResponseDTOs = students.stream()
+                .map(student -> {
+                    return new StudentFeatureResponseDTO(student.getId(),student.getName());
+                })
                 .collect(Collectors.toList());
 
         return studentResponseDTOs;
