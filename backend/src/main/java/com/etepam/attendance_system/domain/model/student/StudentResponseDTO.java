@@ -1,7 +1,7 @@
 package com.etepam.attendance_system.domain.model.student;
 
-import com.etepam.attendance_system.domain.model.Absence;
-import com.etepam.attendance_system.domain.model.Guardian;
+import com.etepam.attendance_system.domain.model.absence.Absence;
+import com.etepam.attendance_system.domain.model.guardian.Guardian;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,10 +10,8 @@ import java.util.Map;
 public record StudentResponseDTO(
         Long id,
         String name,
-        String studentImage,
         LocalDate birth,
-        Guardian mother,
-        Guardian father,
+        List<Guardian> guardians,
         String email,
         String password,
         String phone,

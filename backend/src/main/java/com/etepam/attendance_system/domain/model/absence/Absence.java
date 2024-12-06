@@ -1,4 +1,4 @@
-package com.etepam.attendance_system.domain.model;
+package com.etepam.attendance_system.domain.model.absence;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,4 +20,10 @@ public class Absence {
     private LocalDate absenceDay;
     private boolean isJustificationValid;
     private String justificationText;
+
+    public Absence(LocalDate absenceDay, boolean isJustificationValid, String justificationText){
+        this.absenceDay = absenceDay;
+        this.isJustificationValid = isJustificationValid;
+        this.justificationText = justificationText;
+    }
 }

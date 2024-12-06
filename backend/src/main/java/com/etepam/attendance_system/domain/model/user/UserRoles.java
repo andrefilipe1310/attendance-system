@@ -2,7 +2,7 @@ package com.etepam.attendance_system.domain.model.user;
 
 public enum UserRoles {
     ADMIN("admin"),
-    USER("user");
+    STUDENT("student");
 
     private String role;
 
