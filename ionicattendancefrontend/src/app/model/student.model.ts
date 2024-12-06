@@ -10,6 +10,10 @@ export type Student = {
     absences?: Absence[];  
 }
 
+export type ImageUploadDTO = {
+    file:any
+}
+
 export interface Guardian {
     id?: number;          
     name: string;        

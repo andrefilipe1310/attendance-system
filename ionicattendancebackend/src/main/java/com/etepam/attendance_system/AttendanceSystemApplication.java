@@ -2,6 +2,7 @@ package com.etepam.attendance_system;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+import nu.pattern.OpenCV;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,6 +18,7 @@ public class AttendanceSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AttendanceSystemApplication.class, args);
+		OpenCV.loadShared();
 
 	}
 

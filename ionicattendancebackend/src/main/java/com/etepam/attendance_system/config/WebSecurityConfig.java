@@ -23,21 +23,20 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-
         http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session ->{
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
                 .authorizeHttpRequests(authorize->{
-                    authorize.requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                            .requestMatchers("/auth/**").permitAll()
-                            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                            .requestMatchers(HttpMethod.POST,"/student").hasRole("ADMIN")
-                            .anyRequest().authenticated();
+                    authorize.requestMatchers(HttpMethod.OPTIONS,"/**").permitAll();
+                    // swagger configuration
+                    authorize.requestMatchers("/auth/**","/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
+                    // ADMIN configuration
+                    authorize.requestMatchers(HttpMethod.POST,"/student/**").hasRole("ADMIN");
+                    authorize.anyRequest().permitAll();
                 })
-                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-        ;
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

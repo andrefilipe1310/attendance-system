@@ -1,14 +1,20 @@
 package com.etepam.attendance_system.domain.service;
 
+import com.etepam.attendance_system.domain.model.guardian.Guardian;
 import com.etepam.attendance_system.domain.model.student.Student;
+import com.etepam.attendance_system.domain.model.student.StudentRequestDTO;
 import com.etepam.attendance_system.domain.model.student.StudentResponseDTO;
+import com.etepam.attendance_system.domain.model.student.StudentUpdateDTO;
 import com.etepam.attendance_system.domain.service.interfaces.IStudentService;
+import com.etepam.attendance_system.exceptions.StudentNotFoundException;
 import com.etepam.attendance_system.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -23,16 +29,19 @@ public class StudentService implements IStudentService {
     @Autowired
     StudentRepository studentRepository;
 
+
     @Override
-    public StudentResponseDTO create(Student student) {
-        Student studentResponse = studentRepository.save(student);
-        return convertToDTO(studentResponse);
+    public StudentResponseDTO create(StudentRequestDTO studentRequestDTO) {
+
+        return convertToDTO(studentRepository.save(this.convertToEntity(studentRequestDTO)));
     }
 
     @Override
     public StudentResponseDTO findById(Long id) {
-        Student student = studentRepository.findById(id).orElseThrow(()-> new RuntimeException("Student Not Found"));
-        return convertToDTO(student);
+
+        return convertToDTO(studentRepository
+                .findById(id)
+                .orElseThrow(()-> new StudentNotFoundException("Student Not Found")));
     }
 
     @Override
@@ -46,17 +55,31 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public StudentResponseDTO update(Long id, Student student) {
-        Student updateStudent = studentRepository.findById(id).orElseThrow(()-> new RuntimeException("Student Not Found"));
-        updateStudent = student;
-        studentRepository.save(updateStudent);
-        return convertToDTO(updateStudent);
+    public StudentResponseDTO update(Long id, StudentUpdateDTO studentUpdateDTO) {
+        Student student = studentRepository
+                .findById(id)
+                .orElseThrow(()-> new StudentNotFoundException());
+
+        student.update(studentUpdateDTO);
+        return convertToDTO(studentRepository.save(student));
     }
 
     @Override
-    public String delete(Long id) {
+    public void delete(Long id) {
+        if (!studentRepository.existsById(id)){
+            throw new StudentNotFoundException();
+        }
         studentRepository.deleteById(id);
-        return "Deletado com sucesso";
+
+    }
+
+    public void uploadImage(MultipartFile file, Long id) throws IOException {
+        Student student = studentRepository
+                .findById(id)
+                .orElseThrow(()-> new StudentNotFoundException());
+
+        student.setStudentImage(file.getBytes());
+        studentRepository.save(student);
     }
 
     private Map<LocalDate,Boolean> createWeeklyFrequency(Student student){
@@ -92,6 +115,20 @@ public class StudentService implements IStudentService {
         }
         return monthFrequency;
     }
+    private Student convertToEntity(StudentRequestDTO studentRequestDTO){
+        Student student = new Student();
+       List<Guardian> guardians = studentRequestDTO.guardians().stream()
+                .map(guardianRequestDTO -> {
+                    return new Guardian(guardianRequestDTO.name(),guardianRequestDTO.phone());
+                }).collect(Collectors.toList());
+        student.setName(studentRequestDTO.name());
+        student.setStudentImage(studentRequestDTO.studentImage());
+        student.setPhone(studentRequestDTO.phone());
+        student.setBirth(studentRequestDTO.birth());
+        student.setGuardians(guardians);
+
+        return  student;
+    }
     private StudentResponseDTO convertToDTO(Student student){
 
         Map<LocalDate,Boolean> weeklyFrequency = createWeeklyFrequency(student);
@@ -99,10 +136,8 @@ public class StudentService implements IStudentService {
         return new StudentResponseDTO(
                 student.getId(),
                 student.getName(),
-                student.getStudentImage(),
                 student.getBirth(),
-                student.getMother(),
-                student.getFather(),
+                student.getGuardians(),
                 student.getEmail(),
                 student.getPassword(),
                 student.getPhone(),

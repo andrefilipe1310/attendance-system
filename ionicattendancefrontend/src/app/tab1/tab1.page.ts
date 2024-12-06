@@ -18,12 +18,13 @@ export class Tab1Page implements OnInit {
     email:"",
     password:"",
     phone:"",
-    studentImage: "",
     birth: "",
     guardians: [{ name: "", phone: "" }, { name: "", phone: "" }],
     absences:[],
 
   }
+  studentImage:string|undefined = ""
+
   constructor(private attedanceService: AttendanceService) { }
 
    async takePhoto() {
@@ -35,25 +36,14 @@ export class Tab1Page implements OnInit {
     })
     this.photo = image.dataUrl
     console.log( this.photo?.length)
-    this.student.studentImage = this.photo
+    this.studentImage = this.photo
+
   }
 
   ngOnInit(): void {
-    this.loadStudents()
+    
   }
-
  
-
-  loadStudents() {
-    this.attedanceService.getStudents().subscribe({
-      next: (data: Student[]) => {
-        this.students = data;
-      },
-      error: (error) => {
-        console.error('Error fetching students', error);
-      }
-    })
-  }
   addStudent(newStudent: Student) {
     console.log(newStudent)
     this.attedanceService.addStudent(newStudent).subscribe({
