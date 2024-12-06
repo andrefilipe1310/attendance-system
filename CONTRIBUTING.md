@@ -38,6 +38,10 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 ## Lista de ferramentas, bibliotecas, frameworks e dispositivos utilizados para desenvolver o projeto
 
+- Ionic
+- SpringBoot
+- OpenCV
+- AngularJS
 
 ## Fluxo de trablho
 

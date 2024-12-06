@@ -144,6 +144,11 @@ Com essa interface, você pode explorar todas as rotas disponíveis no sistema, 
 
 ## Lista de ferramentas, bibliotecas, frameworks e dispositivos utilizados para desenvolver o projeto
 
+- Ionic
+- SpringBoot
+- OpenCV
+- AngularJS
+
 ## Fluxo de trablho
 
 Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/tree/development/ionicattendancedocs/models/mindmap)
