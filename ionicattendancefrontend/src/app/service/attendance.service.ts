@@ -45,6 +45,18 @@ export class AttendanceService {
       withCredentials: true
     });
   }
+
+  compareFaceWithStudent(formData:FormData):Observable<boolean>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}` // Apenas o token, sem Content-Type
+    });
+  
+    return this.http.post<boolean>(`${this.apiUrl}/compare-face`, formData, {
+      headers,
+      withCredentials: true
+    });
+
+  }
   
 }
 

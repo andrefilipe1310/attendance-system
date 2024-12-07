@@ -42,7 +42,9 @@ public class FaceDetectionService {
         for (Student student : students) {
             // Carregar a imagem armazenada no aluno
             Mat studentImage = Imgcodecs.imdecode(new MatOfByte(student.getStudentImage()), Imgcodecs.IMREAD_COLOR);
+            System.out.println(studentImage.size());
 
+            System.out.println(studentImage.toString());
             // Se a imagem armazenada do aluno não for carregada corretamente, ignora
             if (studentImage.empty()) {
                 continue;

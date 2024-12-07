@@ -65,8 +65,8 @@ public class StudentController {
     }
 
 
-    @PostMapping("/compare-face/{studentId}")
-    public boolean compareFaceWithStudent(@RequestParam("file") MultipartFile file, @PathVariable Long studentId) {
+    @PostMapping("/compare-face")
+    public boolean compareFaceWithStudent(@RequestParam("file") MultipartFile file) {
         try {
             return faceDetectionService.compareFaceWithStudents(file);
         } catch (Exception e) {

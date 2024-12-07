@@ -19,9 +19,24 @@
 
     <div class="button-container">
 
+      <div class="display-center" expand="block" color="light" style="font-family: InterExtraBold;">
+        <ion-button (click)="takePhoto()" class="photo">Tirar Foto</ion-button>
+        <ion-img [src]="photo"></ion-img>
+      </div>
+      <ion-card *ngIf="studentValid == true">
+    <ion-card-content class="ion-text-center">
+      <div id="message">
+        Reconhecimento facial realizado com sucesso
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="studentValid == false">
+    <ion-card-content class="ion-text-center">
       <div id="message">
         Reconhecimento facial não realizado, tente novamante
       </div>
+    </ion-card-content>
+  </ion-card>
 
       <ion-button expand="block" color="light" style="font-family: InterExtraBold;" >
         TENTAR NOVAMENTE
