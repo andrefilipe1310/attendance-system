@@ -8,19 +8,13 @@
 
 <ion-content>
   <div class="container">
-    <!-- Foto do usuário -->
-    <div class="profile-container">
-      <ion-avatar class="profile-picture">
-        <img alt="Foto do Usuário" src="../../assets/cachorro.jpg" />
-      </ion-avatar>
-      <h2 class="user-name">Dogsons Latins</h2>
-    </div>
+   
 
 
     <div class="button-container">
 
       <div class="display-center" expand="block" color="light" style="font-family: InterExtraBold;">
-        <ion-button (click)="takePhoto()" class="photo">Tirar Foto</ion-button>
+        <ion-button (click)="takePhoto()" class="photo">Realizar reconhecimento</ion-button>
         <ion-img [src]="photo"></ion-img>
       </div>
       <ion-card *ngIf="studentValid == true">
@@ -38,13 +32,13 @@
     </ion-card-content>
   </ion-card>
 
-      <ion-button expand="block" color="light" style="font-family: InterExtraBold;" >
+      <!-- <ion-button expand="block" color="light" style="font-family: InterExtraBold;" >
         TENTAR NOVAMENTE
       </ion-button>
-
-      <ion-button expand="block" style="font-family: InterExtraBold; color:white;" >
+ -->
+<!--       <ion-button expand="block" style="font-family: InterExtraBold; color:white;" >
         REALIZAR OUTRO RECONHECIMENTO
-      </ion-button>
+      </ion-button> -->
     </div>
   </div>
 </ion-content>

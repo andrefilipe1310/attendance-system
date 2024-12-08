@@ -118,7 +118,7 @@ public class StudentService implements IStudentService {
 
         for (int i = 0; i < 7; i++) {
             today = today.minusDays(i);
-            weeklyFrequency.put(today,false);
+            weeklyFrequency.put(today,true);
         }
 
         for (int i = 0; i < student.getAbsences().size(); i++) {
@@ -133,7 +133,7 @@ public class StudentService implements IStudentService {
         Map<LocalDate,Boolean> monthFrequency = new HashMap<>();
         LocalDate today = LocalDate.now();
         for (int i = 1; i <= today.getDayOfMonth(); i++) {
-            monthFrequency.put(today.withDayOfMonth(i),false);
+            monthFrequency.put(today.withDayOfMonth(i),true);
         }
         for (int i = 0; i < student.getAbsences().size(); i++) {
             LocalDate abcense = student.getAbsences().get(i).getAbsenceDay();
