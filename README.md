@@ -3,7 +3,7 @@
 Este é um sistema de controle de frequência de estudantes, desenvolvido com Spring Boot e PostgreSQL, e está hospedado no Railway. Abaixo, você encontrará as instruções para baixar, iniciar o projeto localmente e visualizar as rotas disponíveis.
 
 ## Diagramas
-Para visualizar o diagrama de Classes e de ER clique aqui: [Diagramas](https://github.com/andrefilipe1310/attendance-system/blob/development/ionicattendancedocs/models/classes/Diaramas.pdf)
+Para visualizar o diagrama de Classes e de ER clique aqui: [Diagramas](https://github.com/andrefilipe1310/attendance-system/blob/main/ionicattendancedocs/models/classes/Diaramas.pdf)
 
 
 ```mermaid
@@ -85,8 +85,8 @@ classDiagram
 ```
 ## Casos de Uso e casos de Teste
 
-[Casos de Uso](https://github.com/andrefilipe1310/attendance-system/blob/development/ionicattendancedocs/usecase/Casos%20de%20uso.pdf)
-[Casos de Teste](https://github.com/andrefilipe1310/attendance-system/blob/development/ionicattendancedocs/usecase/Casos%20de%20Teste.pdf)
+[Casos de Uso](https://github.com/andrefilipe1310/attendance-system/blob/main/ionicattendancedocs/usecase/Casos%20de%20uso.pdf)
+[Casos de Teste](https://github.com/andrefilipe1310/attendance-system/blob/main/ionicattendancedocs/usecase/Casos%20de%20Teste.pdf)
 
 ## Pré-requisitos
 
@@ -142,24 +142,24 @@ Com essa interface, você pode explorar todas as rotas disponíveis no sistema, 
 - Certifique-se de que o banco de dados está acessível e a aplicação rodando corretamente no Railway antes de realizar requisições.
 - Todas as funcionalidades do sistema estão ativas na versão de produção.
 
-## Lista de ferramentas, bibliotecas, frameworks e dispositivos utilizados para desenvolver o projeto
+## Lista de bibliotecas, frameworks utilizados para desenvolver o projeto
 
 - Ionic
 - SpringBoot
 - OpenCV
 - AngularJS
 
-## Fluxo de trablho
+## Fluxo de trabalho
 
-Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/tree/development/ionicattendancedocs/models/mindmap)
+Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/blob/main/ionicattendancedocs/models/mindmap/Fluxo%20de%20Trabalho.pdf)
 
 ## Mockup
 
-Para visualizar o prótotipo construido para esse projeto é só acessar a pasta [MOCKUP](https://github.com/andrefilipe1310/attendance-system/tree/development/ionicattendancedocs/models/mockup)
+Para visualizar o prótotipo construido para esse projeto é só acessar a pasta [MOCKUP](https://github.com/andrefilipe1310/attendance-system/tree/main/ionicattendancedocs/models/mockup)
 
 ### Contribuindo
 
-Para contribuir com o projeto acesse o arquivo [CONTRIBUTING.md](https://github.com/andrefilipe1310/attendance-system/blob/development/CONTRIBUTING.md)
+Para contribuir com o projeto acesse o arquivo [CONTRIBUTING.md](https://github.com/andrefilipe1310/attendance-system/blob/main/CONTRIBUTING.md)
 para mais informações!
 
 #### Comandos do Git para contribuir
@@ -189,6 +189,6 @@ git push origm nomebranch
 
 ### Licença
 
-A licença do projeto é a Creative Commons para mais informações acessar o arquivo [LICENCE](https://github.com/andrefilipe1310/attendance-system/blob/development/LICENSE).
+A licença do projeto é a Creative Commons para mais informações acessar o arquivo [LICENCE](https://github.com/andrefilipe1310/attendance-system/blob/main/LICENSE).
 
 
