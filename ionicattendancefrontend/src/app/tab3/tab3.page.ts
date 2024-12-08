@@ -15,24 +15,48 @@ export class Tab3Page {
   constructor(private attedanceService: AttendanceService) {}
 
   async takePhoto() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera,
-    })
-    this.photo = image.dataUrl;
-    if(this.photo == undefined){
-      return
+    try {
+      // Captura a foto usando a câmera
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera, // Garante que a câmera será aberta
+      });
+  
+      // Salva a URL da imagem capturada
+      this.photo = image.dataUrl;
+  
+      // Verifica se a foto foi capturada
+      if (!this.photo) {
+        console.warn('Nenhuma foto capturada.');
+        return;
+      }
+  
+      // Converte a foto para um Blob (para envio ou processamento)
+      const byteString = atob(this.photo.split(',')[1]);
+      const arrayBuffer = new ArrayBuffer(byteString.length);
+      const uint8Array = new Uint8Array(arrayBuffer);
+  
+      for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+      }
+  
+      this.studentImage = new Blob([arrayBuffer], { type: 'image/jpeg' });
+  
+      // Inicia a comparação facial
+      this.compareFaceWithStudent(this.studentImage);
+    } catch (error) {
+      // Log de erro para debugging
+      console.error('Erro ao capturar foto:', error);
+      if(!(error instanceof Error)){
+       return
+      }
+      // Trata cancelamento do usuário (erro típico no navegador)
+      if (error.message?.includes('User cancelled photos app')) {
+        console.warn('O usuário cancelou a captura da foto.');
+      }
     }
-    const byteString = atob(this.photo.split(',')[1]);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      uint8Array[i] = byteString.charCodeAt(i);
-    }
-    this.studentImage = new Blob([arrayBuffer], { type: 'image/jpeg' });
-    this.compareFaceWithStudent(this.studentImage)
   }
 
   compareFaceWithStudent(file: Blob,) {
