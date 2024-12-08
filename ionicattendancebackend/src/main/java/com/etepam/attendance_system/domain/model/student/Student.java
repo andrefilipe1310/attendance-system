@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity(name = "tb_student")
-@Table(name = "tb_student")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +24,8 @@ public class Student extends User {
     private Long id;
 
     private String name;
-    @Column(name = "student_image", columnDefinition = "TEXT")
+    @Lob
+    //@Column(name = "student_image", columnDefinition = "BYTEA")
     private byte[] studentImage;
 
     private String phone;

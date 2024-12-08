@@ -40,11 +40,24 @@ public class FaceDetectionService {
 
         // Percorrer todos os estudantes e comparar as imagens
         for (Student student : students) {
+
+
+            byte[] imageBytes = student.getStudentImage();
+            System.out.println("Tamanho da imagem em bytes: " + imageBytes.length);
+            Mat testImage = Imgcodecs.imdecode(new MatOfByte(file.getBytes()), Imgcodecs.IMREAD_COLOR);
+            if (testImage.empty()) {
+                System.out.println("Falha ao carregar a imagem recebida!");
+            }else {
+                System.out.println("Carregamento concluido");
+            }
             // Carregar a imagem armazenada no aluno
             Mat studentImage = Imgcodecs.imdecode(new MatOfByte(student.getStudentImage()), Imgcodecs.IMREAD_COLOR);
-            System.out.println(studentImage.size());
 
-            System.out.println(studentImage.toString());
+            Imgcodecs.imwrite("received_image.jpg", receivedImage);
+            Imgcodecs.imwrite("student_image.jpg", studentImage);
+
+            System.out.println("received_image.jpg"+ receivedImage.size());
+            System.out.println("student_image.jpg"+ studentImage.size());
             // Se a imagem armazenada do aluno não for carregada corretamente, ignora
             if (studentImage.empty()) {
                 continue;
@@ -65,22 +78,26 @@ public class FaceDetectionService {
 
     // Método para comparar histogramas de duas imagens
     private double compareHistograms(Mat image1, Mat image2) {
-        // Convertendo as imagens para escala de cinza (pode ser ajustado para RGB ou outro espaço de cor)
-        Mat hist1 = new Mat();
-        Mat hist2 = new Mat();
+        // Redimensionar imagens para o mesmo tamanho (exemplo: 256x256)
+        Size standardSize = new Size(256, 256);
+        Imgproc.resize(image1, image1, standardSize);
+        Imgproc.resize(image2, image2, standardSize);
 
-        // Calculando o histograma de ambas as imagens
+        // Convertendo as imagens para escala de cinza
         Imgproc.cvtColor(image1, image1, Imgproc.COLOR_BGR2GRAY);
         Imgproc.cvtColor(image2, image2, Imgproc.COLOR_BGR2GRAY);
 
+        // Calculando o histograma
+        Mat hist1 = new Mat();
+        Mat hist2 = new Mat();
         Imgproc.calcHist(List.of(image1), new MatOfInt(0), new Mat(), hist1, new MatOfInt(256), new MatOfFloat(0f, 256f));
         Imgproc.calcHist(List.of(image2), new MatOfInt(0), new Mat(), hist2, new MatOfInt(256), new MatOfFloat(0f, 256f));
 
         // Normalizando os histogramas
-        Core.normalize(hist1, hist1, 0, 1, Core.NORM_MINMAX, -1, new Mat());
-        Core.normalize(hist2, hist2, 0, 1, Core.NORM_MINMAX, -1, new Mat());
+        Core.normalize(hist1, hist1, 0, 1, Core.NORM_MINMAX);
+        Core.normalize(hist2, hist2, 0, 1, Core.NORM_MINMAX);
 
-        // Comparando os histogramas usando correlação (ou você pode usar outras métricas como Chi-Square, Bhattacharyya)
+        // Comparando os histogramas
         return Imgproc.compareHist(hist1, hist2, Imgproc.CV_COMP_CORREL);
     }
 }

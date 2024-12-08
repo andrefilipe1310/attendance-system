@@ -7,6 +7,9 @@ import com.etepam.attendance_system.exceptions.StudentNotFoundException;
 import com.etepam.attendance_system.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -64,6 +67,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public StudentResponseDTO update(Long id, StudentUpdateDTO studentUpdateDTO) {
+
         Student student = studentRepository
                 .findById(id)
                 .orElseThrow(()-> new StudentNotFoundException());
@@ -82,11 +86,27 @@ public class StudentService implements IStudentService {
     }
 
     public void uploadImage(MultipartFile file, Long id) throws IOException {
+        // Validar se o arquivo foi enviado corretamente
+        if (file.isEmpty()) {
+            throw new IllegalArgumentException("Arquivo de imagem não foi enviado.");
+        }
+
+        // Verificar se o estudante existe
         Student student = studentRepository
                 .findById(id)
-                .orElseThrow(()-> new StudentNotFoundException());
+                .orElseThrow(() -> new StudentNotFoundException("Estudante com ID " + id + " não encontrado."));
 
-        student.setStudentImage(file.getBytes());
+        // Obter bytes do arquivo
+        byte[] imageBytes = file.getBytes();
+
+        // Validar se a imagem é válida utilizando OpenCV
+        Mat image = Imgcodecs.imdecode(new MatOfByte(imageBytes), Imgcodecs.IMREAD_COLOR);
+        if (image.empty()) {
+            throw new IllegalArgumentException("Arquivo de imagem inválido ou corrompido.");
+        }
+
+        // Salvar a imagem no banco de dados
+        student.setStudentImage(imageBytes);
         studentRepository.save(student);
     }
 
