@@ -36,7 +36,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 - [Git](https://git-scm.com/)
 - [PostgreSQL](https://www.postgresql.org/download/)
 
-## Lista de ferramentas, bibliotecas, frameworks e dispositivos utilizados para desenvolver o projeto
+## Lista de bibliotecas, frameworks utilizados para desenvolver o projeto
 
 - Ionic
 - SpringBoot
@@ -45,7 +45,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 ## Fluxo de trablho
 
-Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/tree/development/ionicattendancedocs/models/mindmap)
+Para ter mais informações sobre o fluxo de trabalho utilizados no projeto é só visulizar o mindmap [AQUI](https://github.com/andrefilipe1310/attendance-system/blob/main/ionicattendancedocs/models/mindmap/Fluxo%20de%20Trabalho.pdf)
 
 
 ## Como contribuir
